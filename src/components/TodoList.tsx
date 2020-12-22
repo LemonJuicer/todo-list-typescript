@@ -6,7 +6,7 @@ interface Props {
     filteredTodos: todo[];
 }
 
-const TodoList: React.FC<Props> = props => {
+function TodoList(props: Props): React.ReactElement {
     return (
         <div className="todo-container">
             <ul className="todo-list">
@@ -23,6 +23,6 @@ const TodoList: React.FC<Props> = props => {
             </ul>
         </div>
     );
-};
+}
 
 export default TodoList;

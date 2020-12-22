@@ -6,7 +6,7 @@ interface Props {
     setStatus: (status: string) => void;
 }
 
-const Form: React.FC<Props> = props => {
+function Form(props: Props): React.ReactElement {
     function inputTextHandler(event: React.ChangeEvent<HTMLInputElement>) {
         props.setInputText(event.target.value);
     }
@@ -54,6 +54,6 @@ const Form: React.FC<Props> = props => {
             </div>
         </form>
     );
-};
+}
 
 export default Form;

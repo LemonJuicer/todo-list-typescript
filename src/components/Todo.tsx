@@ -3,9 +3,10 @@ interface Props {
     todos: todo[];
     todo: todo;
     key: number;
+    children: string;
 }
 
-const Todo: React.FC<Props> = props => {
+function Todo(props: Props): React.ReactElement {
     function deleteHandler() {
         props.setTodos(props.todos.filter(item => item.id !== props.todo.id));
     }
@@ -39,6 +40,6 @@ const Todo: React.FC<Props> = props => {
             </button>
         </div>
     );
-};
+}
 
 export default Todo;

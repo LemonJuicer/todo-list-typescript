@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import Form from './components/Form';
 import TodoList from './components/TodoList';
 
-const App: React.FC = () => {
+function App(): React.ReactElement {
     const [inputText, setInputText] = useState<string>('');
     const [todos, setTodos] = useState<todo[]>([]);
     const [status, setStatus] = useState<string>('all');
@@ -55,6 +55,6 @@ const App: React.FC = () => {
             />
         </div>
     );
-};
+}
 
 export default App;
