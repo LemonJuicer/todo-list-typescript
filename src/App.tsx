@@ -6,10 +6,10 @@ import Form from './components/Form';
 import TodoList from './components/TodoList';
 
 function App(): React.ReactElement {
-    const [inputText, setInputText] = useState<string>('');
-    const [todos, setTodos] = useState<todo[]>([]);
-    const [status, setStatus] = useState<string>('all');
-    const [filteredTodos, setFilteredTodos] = useState<todo[]>([]);
+    const [inputText, setInputText] = useState('');
+    const [todos, setTodos] = useState<Todo[]>([]);
+    const [status, setStatus] = useState<Status>('all');
+    const [filteredTodos, setFilteredTodos] = useState<Todo[]>([]);
 
     useEffect(() => {
         if (localStorage.getItem('todos') === null) {
@@ -22,11 +22,11 @@ function App(): React.ReactElement {
     useEffect(() => {
         switch (status) {
             case 'completed':
-                setFilteredTodos(todos.filter(item => item.completed === true));
+                setFilteredTodos(todos.filter(todo => todo.completed === true));
                 break;
             case 'uncompleted':
                 setFilteredTodos(
-                    todos.filter(item => item.completed === false),
+                    todos.filter(todo => todo.completed === false),
                 );
                 break;
             default:

@@ -1,19 +1,18 @@
-interface Props {
-    setTodos: (todos: todo[]) => void;
-    todos: todo[];
-    todo: todo;
-    key: number;
+type Props = {
+    setTodos: (todos: Todo[]) => void;
+    todos: Todo[];
+    todo: Todo;
     children: string;
-}
+};
 
-function Todo(props: Props): React.ReactElement {
+function Todo({ setTodos, todos, todo, children }: Props): React.ReactElement {
     function deleteHandler() {
-        props.setTodos(props.todos.filter(item => item.id !== props.todo.id));
+        setTodos(todos.filter(item => item.id !== todo.id));
     }
     function completeHandler() {
-        props.setTodos(
-            props.todos.map(item => {
-                if (item.id === props.todo.id) {
+        setTodos(
+            todos.map(item => {
+                if (item.id === todo.id) {
                     return {
                         ...item,
                         completed: !item.completed,
@@ -25,12 +24,8 @@ function Todo(props: Props): React.ReactElement {
     }
     return (
         <div className="todo">
-            <li
-                className={`todo-item ${
-                    props.todo.completed ? 'completed' : ''
-                }`}
-            >
-                {props.children}
+            <li className={`todo-item ${todo.completed ? 'completed' : ''}`}>
+                {children}
             </li>
             <button onClick={completeHandler} className="complete-btn">
                 <i className="fas fas fa-check" />

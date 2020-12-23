@@ -1,23 +1,27 @@
 import Todo from './Todo';
 
-interface Props {
-    todos: todo[];
-    setTodos: (todos: todo[]) => void;
-    filteredTodos: todo[];
-}
+type Props = {
+    todos: Todo[];
+    setTodos: (todos: Todo[]) => void;
+    filteredTodos: Todo[];
+};
 
-function TodoList(props: Props): React.ReactElement {
+function TodoList({
+    todos,
+    setTodos,
+    filteredTodos,
+}: Props): React.ReactElement {
     return (
         <div className="todo-container">
             <ul className="todo-list">
-                {props.filteredTodos.map(item => (
+                {filteredTodos.map(todo => (
                     <Todo
-                        setTodos={props.setTodos}
-                        todos={props.todos}
-                        todo={item}
-                        key={item.id}
+                        setTodos={setTodos}
+                        todos={todos}
+                        todo={todo}
+                        key={todo.id}
                     >
-                        {item.text}
+                        {todo.text}
                     </Todo>
                 ))}
             </ul>

@@ -1,7 +1,9 @@
 // / <reference types="react-scripts" />
 
-interface todo {
+type Todo = {
     text: string;
     completed: boolean;
     id: number;
-}
+};
+
+type Status = 'all' | 'completed' | 'uncompleted';
